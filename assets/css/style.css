@@ -1,0 +1,196 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+:root {
+  --headingText: #181c32;
+  --descriptionText: #7e8299;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  transition: all ease-in-out 0.5s;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 0.5rem;
+}
+.heading {
+  font-size: clamp(1.25rem, 4.5vw, 2rem);
+  font-weight: 600;
+  padding: 0 1rem;
+  color: var(--headingText);
+  text-align: center;
+}
+#wrap {
+  padding: 1rem 1rem;
+  position: relative;
+  display: block;
+  width: 100%;
+}
+.item {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  border-radius: 1.25rem;
+  background-color: #fff;
+  border: 1px solid #f1f1f2;
+  color: var(--headingText);
+  cursor: pointer;
+}
+.slick-slide:hover:nth-child(4n + 1) .item {
+  background-color: #f1faff;
+  border-color: #f1faff;
+}
+.slick-slide:hover:nth-child(4n + 2) .item {
+  background-color: #e8fff3;
+  border-color: #e8fff3;
+}
+.slick-slide:hover:nth-child(4n + 3) .item {
+  background-color: #fff8dd;
+  border-color: #fff8dd;
+}
+.slick-slide:hover:nth-child(4n + 4) .item {
+  background-color: #f8f5ff;
+  border-color: #f8f5ff;
+}
+.item-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.item .sub-heading {
+  padding: 0.25rem 0.75rem;
+  background: #f1f1f2;
+  color: #4b5675;
+  display: inline-flex;
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  width: max-content;
+  text-transform: capitalize;
+  opacity: 1;
+}
+.item:hover .sub-heading {
+  background: #fff;
+}
+.item h3 {
+  margin: 0;
+  font-size: 1rem;
+  text-transform: capitalize;
+  font-weight: 600;
+  color: currentColor;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0.25px;
+}
+.item p {
+  margin: 0;
+  color: var(--descriptionText);
+  text-align: left;
+  line-height: 1.5;
+  font-size: 0.875rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.item img {
+  border-radius: 0.5rem;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+  width: 100%;
+  max-width: 250px;
+  margin: auto;
+  mix-blend-mode: darken;
+  filter: grayscale(1);
+}
+.item:hover img {
+  filter: grayscale(0);
+}
+.item li {
+  padding: 15px 0;
+  font-size: 18px;
+}
+#wrap li:not(:last-of-type) {
+  border-bottom: 1px solid #fff;
+}
+
+.item a {
+  display: inline-flex;
+  /* padding: 0.125rem 1.25rem; */
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  justify-content: center;
+}
+.item a:hover {
+  text-decoration: underline;
+}
+
+/* Slick css*/
+
+.slider {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.slick-slide {
+  margin: 0 15px;
+}
+.slick-next {
+  right: 40px;
+}
+.slick-prev {
+  left: 40px;
+}
+.slick-next:before {
+  right: 0;
+}
+.slick-prev:before {
+  left: 0;
+}
+:is(.slick-prev, .slick-next):before {
+  content: "";
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  background-color: #dcdcdc;
+  position: absolute;
+  top: calc(50% - 15px);
+  z-index: -1;
+  transition: 0.5s ease-in-out background-color;
+}
+:is(.slick-prev, .slick-next) {
+  position: absolute;
+  top: -2.875rem;
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  font-size: 1rem;
+  opacity: 0.75;
+  letter-spacing: 1.5px;
+  transition: all 0.5s ease-in-out;
+}
+:is(.slick-prev, .slick-next):hover {
+  opacity: 1;
+}
+:is(.slick-prev, .slick-next):hover:before {
+  background-color: #e8fff3;
+}
+
+@media (max-width: 991px) {
+  :is(.slick-prev, .slick-next) {
+    position: absolute;
+    top: auto;
+    bottom: -2.25rem;
+  }
+}
