@@ -65,3 +65,71 @@ function randColor() {
 }
 const bg = document.getElementById("body");
 bg.style.setProperty("--color", randColor());
+
+
+
+
+function slider_init() {
+  $("#wrap").slick({
+    autoplay: true,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  });
+}
+//  Create a loader element
+const loader = document.createElement("div");
+loader.setAttribute("class", "loader");
+const body = document.getElementById("body");
+body.appendChild(loader);
+
+//  Fetch data from the API
+fetch("https://fakestoreapi.com/products/")
+  .then((response) => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw new Error("NETWORK RESPONSE ERROR");
+    }
+  })
+  .then((data) => {
+    //  Remove the loader once data is fetched
+    body.removeChild(loader);
+
+    // Continue with displaying the data
+    const heading = document.createElement("h2");
+    heading.setAttribute("class", "heading");
+    heading.innerHTML = "Featured Product Collection";
+    const mainDiv = document.createElement("div");
+    mainDiv.setAttribute("id", "wrap");
+    body.appendChild(heading);
+    body.appendChild(mainDiv);
+    displayData(data);
+  })
+  .catch((error) => {
+    //  Remove the loader in case of an error
+    body.removeChild(loader);
+    console.error("FETCH ERROR:", error);
+  });
