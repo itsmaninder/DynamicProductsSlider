@@ -121,6 +121,8 @@ body {
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-weight: 300;
+  text-transform: capitalize;
 }
 .item img {
   border-radius: 0.5rem;
@@ -157,7 +159,12 @@ body {
 }
 
 /* Slick css*/
-
+.slick-slide {
+  transform: scale(0.5);
+}
+.slick-active {
+  transform: scale(1);
+}
 .slider {
   max-width: 1000px;
   margin: 0 auto;
@@ -199,9 +206,11 @@ body {
   opacity: 0.75;
   letter-spacing: 1.5px;
   transition: all 0.5s ease-in-out;
+  color: var(--headingText);
 }
 :is(.slick-prev, .slick-next):hover {
   opacity: 1;
+  transform: scale(1.2);
 }
 :is(.slick-prev, .slick-next):hover:before {
   background-color: #e8fff3;
